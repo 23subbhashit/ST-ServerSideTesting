@@ -70,6 +70,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @GetMapping("/")
     public ResponseEntity<List<UserDto>> getAllUsers() {
         try {

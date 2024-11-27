@@ -65,9 +65,7 @@ public class CommentServiceTest {
         when(modelMapper.map(any(CommentDto.class), eq(Comment.class))).thenReturn(comment);
         when(commentRepository.save(any(Comment.class))).thenReturn(comment);
         when(modelMapper.map(any(Comment.class), eq(CommentDto.class))).thenReturn(commentDto);
-
         CommentDto createdComment = commentService.createComment(commentDto, 1);
-
         assertNotNull(createdComment);
         assertEquals(commentDto.getId(), createdComment.getId());
         assertEquals(commentDto.getContent(), createdComment.getContent());
@@ -79,12 +77,10 @@ public class CommentServiceTest {
     void testCreateCommentPostNotFound() {
         // Test failure due to post not found
         when(postRepository.findById(anyInt())).thenReturn(Optional.empty());
-
         ResourceNotFoundException exception = assertThrows(
                 ResourceNotFoundException.class,
                 () -> commentService.createComment(commentDto, 1)
         );
-
         assertEquals("Post not found with Post Id : 1", exception.getMessage());
         verify(postRepository, times(1)).findById(1);
         verify(commentRepository, never()).save(any(Comment.class));

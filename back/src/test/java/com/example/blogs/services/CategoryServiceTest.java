@@ -167,7 +167,6 @@ public class CategoryServiceTest {
         List<Category> categories = new ArrayList<>();
         Category category1 = new Category();
         category1.setCategoryTitle("Tech");
-
         Category category2 = new Category();
         category2.setCategoryTitle("Health");
 

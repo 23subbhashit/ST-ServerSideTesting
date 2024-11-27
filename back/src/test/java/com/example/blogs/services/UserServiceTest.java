@@ -172,9 +172,6 @@ public class UserServiceTest {
         List<User> users = new ArrayList<>();
         users.add(user);
 
-        List<UserDto> userDtos = new ArrayList<>();
-        userDtos.add(userDto);
-
         when(userRepo.findAll()).thenReturn(users);
         when(modelMapper.map(any(User.class), eq(UserDto.class))).thenReturn(userDto);
 
@@ -219,7 +216,6 @@ public class UserServiceTest {
             output.setEmail(input.getEmail());
             return output;
         });
-
         // Act
         UserDto inputDto = new UserDto();
         inputDto.setName("John Doe");
@@ -227,7 +223,6 @@ public class UserServiceTest {
         inputDto.setPassword("password123");
 
         UserDto registeredUser = userService.registerNewUser(inputDto);
-
         // Assert
         assertNotNull(registeredUser);
         assertEquals("John Doe", registeredUser.getName());

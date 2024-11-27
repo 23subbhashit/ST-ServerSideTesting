@@ -26,11 +26,10 @@
 //   (error) => Promise.reject(error)
 // );
 
-
 import axios from "axios";
 import { getToken } from "../auth";
 
-export const BASE_URL = "http://localhost:9090/api/v1";
+export const BASE_URL = "http://localhost:8080/api";
 // export const BASE_URL = "https://apis.lcwdblogs.online/api/v1";
 
 export const myAxios = axios.create({
